@@ -14,12 +14,15 @@ const MotionNav = dynamic(() => import('../components/MotionNav'), {
 export const metadata = {
   title: "Vaishnavi Lokhande's Portfolio",
   description: "Portfolio of Vaishnavi Lokhande",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gradient-to-b from-gray-900 to-black min-h-screen`}>
+      <body className={`${inter.className} min-h-screen bg-gradient-to-b from-white via-pink-50 to-white`}>
         <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
           <MotionNav />
         </header>
