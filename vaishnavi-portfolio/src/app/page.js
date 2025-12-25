@@ -76,24 +76,27 @@ export default function Home() {
                 <motion.span 
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-block px-6 py-3 rounded-full bg-pink-500 text-white hover:bg-pink-600 transition-all cursor-pointer shadow-sm"
+                  className="inline-block px-6 py-3 rounded-full bg-pink-500 text-white hover:bg-pink-600 transition-all cursor-pointer shadow-md hover:shadow-lg"
                 >
                   View My Projects
                 </motion.span>
               </Link>
 
               <div className="mt-4">
-                <Link href="/assets/Mallajosyula_Satwik_Resume.pdf" passHref>
-                  <motion.span 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="inline-block px-6 py-3 rounded-full bg-pink-100 text-pink-700 hover:bg-pink-200 transition-all cursor-pointer"
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    Download My Resume
-                  </motion.span>
-                </Link>
+                <a
+  href="/assets/SWE_Vaishnavi_Lokhande_resume.pdf"
+  download
+>
+  <motion.span 
+    whileHover={{ scale: 1.02 }}
+    whileTap={{ scale: 0.98 }}
+    className="inline-block px-6 py-3 rounded-full bg-pink-100 text-pink-700 hover:bg-pink-200 transition-all cursor-pointer"
+  >
+    Download My Resume
+  </motion.span>
+</a>
+
+
               </div>
             </div>
           </motion.div>
