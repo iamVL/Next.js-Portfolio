@@ -1,54 +1,53 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FiDownload } from 'react-icons/fi';
+import React from "react";
+import { motion } from "framer-motion";
+import { FiDownload } from "react-icons/fi";
 
 const Resume = () => {
   return (
-    <div className="container mx-auto mt-10 flex flex-col items-center">
-      <motion.h1 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-4xl font-bold text-center bg-gradient-to-r from-emerald-300 to-blue-400 bg-clip-text text-transparent mb-8"
-      >
-        Resume
-      </motion.h1>
+    <div className="container mx-auto px-4 py-12 max-w-6xl">
       
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="container mx-auto mt-10 p-1 bg-gradient-to-r from-emerald-300 to-blue-400 rounded-lg shadow-lg"
+      {/* HEADER */}
+      <motion.div
+        initial={{ opacity: 0, y: -15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4"
       >
-        <div className="bg-gray-900 rounded-lg p-1">
-          <iframe
-            src="/assets/Mallajosyula_Satwik_Resume.pdf"
-            className="w-full h-[90vh] sm:h-[80vh] md:h-[85vh] lg:h-[90vh] xl:h-[95vh] rounded-lg"
-            title="Satwik Mallajosyula's Resume"
-            width="100%"
-            height="800px"
-          />
-        </div>
+        <h1 className="text-4xl font-bold text-foreground">
+          Resume
+        </h1>
+<a
+  href="/assets/SWE_Vaishnavi_Lokhande_resume.pdf"
+  download="Vaishnavi_Lokhande_Resume.pdf"
+  className="ml-4 inline-flex items-center rounded-full bg-pink-500 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-pink-600"
+>
+  Download
+</a>
+
+
       </motion.div>
 
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-8"
+      {/* RESUME VIEWER */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4 }}
+        className="
+          rounded-2xl border border-pink-200/60 
+          shadow-lg bg-white overflow-hidden
+        "
+        style={{ height: "85vh" }}
       >
-        <a 
-          href="/assets/Mallajosyula_Satwik_Resume.pdf" 
-          download
-          className="flex items-center px-6 py-3 bg-gradient-to-r from-emerald-400 to-blue-500 text-white font-semibold rounded-full hover:from-emerald-500 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-        >
-          <FiDownload className="mr-2" /> Download Resume
-        </a>
+        <iframe
+          src="/assets/SWE_Vaishnavi_Lokhande_resume.pdf"
+          title="Vaishnavi Lokhande Resume"
+          className="w-full h-full"
+        />
       </motion.div>
     </div>
   );
-}
+};
 
 export default Resume;

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export async function GET() {
     const token = process.env.GITHUB_ACCESS_TOKEN;
-    const username = 'satwikug25'; // Replace with your GitHub username
+    const username = 'iamVL'; 
 
     try {
         const { data } = await axios.post(

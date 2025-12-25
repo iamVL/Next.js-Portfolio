@@ -18,8 +18,8 @@ export async function POST(req: Request) {
   try {
     // Send email
     await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-      to: "satwikug@gmail.com", // Your email address
+      from: `"Vaishnavi Lokhande Portfolio Contact" <${process.env.EMAIL_USER}>`,
+      to: "vaishnavi.lokhande000@gmail.com", // Your email address
       subject: `New message from ${name}`,
       text: `From: ${name} (${email})\n\nMessage: ${message}`,
       html: `<p><strong>From:</strong> ${name} (${email})</p><p><strong>Message:</strong> ${message}</p>`,

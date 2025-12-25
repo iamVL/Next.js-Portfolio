@@ -7,15 +7,19 @@ export type IconProps = React.HTMLAttributes<SVGElement>;
 
 export function DockDemo() {
   return (
-    <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-emerald-50 bg-opacity-90 shadow-lg rounded-lg p-3 transition-transform duration-300 hover:translate-y-[-10px] z-50">
-      <Dock direction="middle" className="border-none">
-        <DockIcon onClick={()=>{return (window.open('https://github.com/satwikug25','_blank'))}}>
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-md shadow-lg rounded-2xl px-4 py-3 hover:-translate-y-2 transition-transform duration-300 z-50 border border-pink-200">
+      <Dock direction="middle" className="border-none bg-transparent">
+        <DockIcon
+          onClick={() => window.open("https://github.com/iamVL", "_blank")}
+          className="text-foreground hover:text-pink-500 transition-colors"
+        >
           <Icons.gitHub className="w-6 h-6" />
         </DockIcon>
       </Dock>
     </div>
   );
 }
+
 
 const Icons = {
   gitHub: (props: IconProps) => (
