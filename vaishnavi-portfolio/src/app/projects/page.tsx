@@ -1,58 +1,81 @@
 import React from 'react'
 import ProjectCard from '../../components/ProjectCard'
 
-// You can replace this with actual project data, possibly fetched from an API or CMS
 const projectsData = [
   {
-    title: "Pawn Up (Best use of ChromaDB @ Calhacks)",
-    description: "Pawn Up is an AI-powered chess improvement platform that allows users to analyze their games, solve tailored puzzles, and explore grandmaster matches to enhance their skills. By leveraging technologies like Groq, Llama3, and vector databases, it provides a personalized, intuitive experience for both beginners and advanced players.",
-    imageUrl: "/assets/pawnup.webp",
-    githubUrl: "https://github.com/satwikug25/calhacks",
-    technologies: ["React", "Python","JavaScript","Flask","Node.js", "ChromaDB","Groq","Llama3.1","Gemini 1.5"]
+    title: "ASR Whisper Transcriber",
+    description: "A full-stack speech-to-text transcription web application featuring a React frontend and a FastAPI backend. Users can record audio in-browser, generate word-level transcripts using OpenAI Whisper via faster-whisper, and manage transcript history with JWT-based authentication. The system uses SQLite with SQLAlchemy, is deployment-ready, and demonstrates clean API-driven architecture.",
+    imageUrl: "/assets/whisper.webp",
+    githubUrl: "https://github.com/iamVL/vaish-asr-whisper-transcriber",
+    linkedinUrl: "https://www.linkedin.com/in/vaishnavi-lokhande000/details/projects/",
+    technologies: ["React", "FastAPI", "Python", "Whisper ASR", "SQLite", "JWT", "SQLAlchemy", "TailwindCSS"]
   },
   {
-    title: "surgARy",
-    description: "SurgARy is an AI-assisted surgery planning system that generates detailed step-by-step checklists for doctors using Snap AR based on patient reports and medical scans, such as X-rays. The system aims to reduce human error by integrating advanced image analysis and machine learning to support more precise and efficient surgical procedures.",
-    imageUrl: "/assets/surgary.webp",
-    githubUrl: "https://github.com/satwikug25/Hackgt",
-    technologies: ["React", "Flask","Python","JavaScript", "Langchain","Gpt-4o", "Snap AR", "Lens Studio","MongoDB"]
+    title: "Neo-Paw-Itan (Pet Patrol)",
+    description: "Neo-Paw-Itan is a full-stack pet management platform that centralizes pet routines, profiles, health records, and memories into a single dashboard. Designed with a dashboard-first UX, the application supports authenticated sessions, scalable data relationships, and clean separation of concerns across frontend, backend, and database layers.",
+    imageUrl: "/assets/petpatrol.webp",
+    githubUrl: "https://github.com/iamVL/pet--patrol",
+    linkedinUrl: "https://www.linkedin.com/in/vaishnavi-lokhande000/details/projects/",
+    technologies: ["React", "PHP", "MySQL", "UI/UX Design", "Session Authentication", "System Architecture"]
   },
   {
-    title: "BlockWire (Best BlockChain Hack @ PennApps)",
-    description: "BlockWire is a blockchain-based solution designed to reduce international wire transfer times by eliminating intermediary banks, enabling faster and more secure transactions. It integrates AI-powered fraud detection models and leverages technologies like Cerebras.ai, React, Python, MongoDB, and PropelAuth for user authentication.",
-    imageUrl: "/assets/blockwire.webp",
-    githubUrl: "https://github.com/satwikug25/pennapps",
-    technologies: ["React", "Flask","Python","JavaScript", "Hedera","Cerbras AI","MongoDB"]
+    title: "RecovR – Post-Surgery Recovery Platform",
+    description: "RecovR is a post-surgery recovery platform composed of an iOS application and a web dashboard. Patients log recovery data, track heart rate, and receive medication alerts. The system integrates Gemini AI to generate personalized recovery reports and uses Firebase Realtime Database for instant synchronization with doctors.",
+    imageUrl: "/assets/recovr.webp",
+    githubUrl: "https://github.com/iamVL/RecovR",
+    linkedinUrl: "https://www.linkedin.com/in/vaishnavi-lokhande000/details/projects/",
+    technologies: ["Swift", "Firebase", "Gemini AI", "JavaScript", "HTML", "CSS", "iOS Development"]
   },
   {
-    title: "Schedul.io",
-    description: "Schedul.io is an AI-powered phone call assistant designed for small businesses, capable of booking appointments through voice interactions and automatically syncing them with Google Calendar. The assistant is customizable for different business types, and the project incorporates technologies like Groq, Next.js, TypeScript, Llama3, and Cartesia to provide a seamless scheduling and dashboard experience for business owners.",
-    imageUrl: "/assets/schedulio.webp",
-    githubUrl: "https://github.com/satwikug25/schedulio",
-    technologies: ["Next.js", "Typescript","Google API","Cartesia", "Whisper","Llama3.1", "Groq", "NextAuth"]
+    title: "BookTrack Library",
+    description: "A full-stack library management system built with React, Node.js, and PostgreSQL to streamline inventory and lending operations. The project improves search performance through advanced filtering and optimized PostgreSQL schemas, reducing query response times and improving system efficiency.",
+    imageUrl: "/assets/booktrack.webp",
+    githubUrl: "https://github.com/iamVL/BookTrackLibrary",
+    linkedinUrl: "https://www.linkedin.com/in/vaishnavi-lokhande000/details/projects/",
+    technologies: ["React", "Node.js", "PostgreSQL", "SQL Optimization", "API Development", "Git", "Jira"]
   },
   {
-    title: "Compiler",
-    description: "This Compiler Project involved building a small compiler, lexer and parser that generates an intermediate representation of a simple programming language(grammar). The project focused on implementing key components such as assignment, input, output, and control flow statements (if, while, switch, for) while utilizing a provided interpreter to execute the generated instructions.",
-    imageUrl: "/assets/compiler.webp",
-    githubUrl: "https://github.com/satwikug25/compiler",
-    technologies: ["C++"]
+    title: "The Melting Pot",
+    description: "A culturally inclusive social media-style cooking platform that allows users to explore, share, and review recipes. The application supports advanced filtering based on ingredients, allergies, and skill level, emphasizing accessibility and responsive UI. Built using React, a Swagger-based JavaScript backend, and MySQL.",
+    imageUrl: "/assets/meltingpot.webp",
+    githubUrl: "https://github.com/iamVL/melting",
+    linkedinUrl: "https://www.linkedin.com/in/vaishnavi-lokhande000/details/projects/",
+    technologies: ["React", "JavaScript", "Swagger API", "MySQL", "Figma", "Agile"]
   },
   {
-    title: "Reader's Retrieve",
-    description: "Readers Retrieve is an e-commerce bookstore that delivers a personalized online shopping experience for book lovers. It features a responsive and modern front-end built with React.js and Tailwind CSS, and leverages PostgreSQL for fast retrieval and management of product information, user data, and transaction details. The platform is designed to showcase a catalog of over 200 books, ensuring a smooth user experience with scalable back-end support.",
-    imageUrl: "/assets/reader.webp",
-    githubUrl: "https://github.com/satwikug25/Books_Retrieve-Online-bookstore-",
-    technologies: ["React","JavaScript","Tailwind CSS","Django","Python"]
+    title: "Little Star Pediatric Care System",
+    description: "A JavaFX-based office automation system designed for pediatric clinics. The system includes secure login, prescription management, and REST-based messaging. Built with Java, Spring Boot, and SQL, following structured SDLC practices.",
+    imageUrl: "/assets/littlestar.webp",
+    githubUrl: "https://github.com/iamVL/CSE-360-Office-Automation-System-for-Pediatric-Doctor-s-Office",
+    linkedinUrl: "https://www.linkedin.com/in/vaishnavi-lokhande000/details/projects/",
+    technologies: ["Java", "JavaFX", "Spring Boot", "SQL", "REST APIs", "SDLC"]
   },
-  // Add more projects as needed
+  {
+    title: "Project Spyn: LEGO Automated Car",
+    description: "An autonomous LEGO EV3-based toy car programmed in MATLAB to navigate a maze and transport a payload safely. The project emphasizes navigation logic, performance tuning, and problem-solving in a constrained hardware environment.",
+    imageUrl: "/assets/projectspyn.webp",
+    githubUrl: "https://github.com/iamVL/Project-Spyn-Lego-Automated-Car",
+    linkedinUrl: "https://www.linkedin.com/in/vaishnavi-lokhande000/details/projects/",
+    technologies: ["MATLAB", "LEGO EV3", "Autonomous Navigation", "Problem Solving"]
+  },
+  {
+    title: "ELI (Engage, Learn, Innovate)",
+    description: "A smart classroom engagement device designed to encourage post-COVID classroom participation. Built using Arduino and Python, the system triggers visual feedback through LEDs based on user interaction and includes a custom laser-cut physical enclosure.",
+    imageUrl: "/assets/eli.webp",
+    githubUrl: null,
+    linkedinUrl: "https://www.linkedin.com/in/vaishnavi-lokhande000/details/projects/",
+    technologies: ["Python", "Arduino", "Embedded Systems", "Hardware Prototyping"]
+  }
 ];
 
 const Projects = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-white mb-8">My Projects</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold text-black mb-10">
+        My Projects
+      </h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {projectsData.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
