@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Typewriter } from 'react-simple-typewriter';
 import dynamic from 'next/dynamic';
 
+
 // Dynamically import GitHubCalendar with ssr option set to false
 const GitHubCalendar = dynamic(
   () => import('react-github-calendar'),
@@ -56,7 +57,14 @@ export default function Home() {
               I&apos;m a&nbsp; 
               <span className="text-pink-500 font-medium">
                 <Typewriter
-                  words={[' Computer Science Student @ UB', ' React Developer', ' Full Stack Developer', ' Software Engineer Intern @ Axio AI']}
+                words={[
+  "Computer Science Undergrad @ University at Buffalo",
+  "Software Engineering & Full-Stack Development",
+  "Machine Learning & AI Enthusiast",
+  "Building real-world products with code",
+  "Seeking Full-Time Software Engineering Roles"
+]}
+
                   loop={0}
                   cursor
                   cursorStyle='|'
@@ -67,7 +75,7 @@ export default function Home() {
               </span>
             </p>
             <p className="text-lg mt-4 font-light leading-relaxed text-muted-foreground">
-              Welcome to my portfolio! I am Vaishnavi Lokhande, a Computer Science student at University at Buffalo SUNY with a passion for developing innovative software solutions.
+              Welcome to my portfolio! I’m Vaishnavi Lokhande, a Computer Science undergraduate at the University at Buffalo, SUNY, interested in software engineering, machine learning, and building real-world applications.
             </p>
             {/* BUTTONS */}
 
