@@ -24,17 +24,25 @@ const MotionNav = () => {
 
         <div className="flex items-center space-x-6">
           <ul className="flex space-x-6 text-foreground">
-            {['Home', 'Resume', 'Projects', 'Experience', 'Contact'].map((item) => (
-              <li key={item}>
-                <Link
-                  href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                  className="hover:text-pink-500 transition-colors"
-                >
-                  {item}
-                </Link>
-              </li>
-            ))}
-          </ul>
+  {['Home', 'Resume', 'Projects', 'Experience', 'Certifications', 'Contact'].map((item) => (
+    <li key={item}>
+      <Link
+        href={
+          item === 'Home'
+            ? '/'
+            : item === 'Certifications'
+            ? '/certifications'
+            : `/${item.toLowerCase()}`
+        }
+        className="hover:text-pink-500 transition-colors"
+      >
+        {item}
+      </Link>
+    </li>
+  ))}
+</ul>
+
+
 
           <div className="flex space-x-4">
             <a
