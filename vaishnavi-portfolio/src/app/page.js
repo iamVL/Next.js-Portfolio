@@ -66,7 +66,7 @@ export default function Home() {
 <p className="text-base text-slate-700 leading-relaxed max-w-xl">
   Welcome to my portfolio!
   <br />
-  I am a Computer Science undergraduate at the University at Buffalo, SUNY,
+  I am a Computer Science undergraduate at the <span className="font-semibold">University at Buffalo, SUNY</span>,
   focused on building end-to-end software systems. My work spans frontend
   interfaces, backend APIs, and applied machine learning to deliver real-world,
   user-facing products.
@@ -77,7 +77,7 @@ export default function Home() {
             {/* RESEARCH CALLOUT */}
             <div className="rounded-xl border border-slate-200 bg-white/60 p-3 max-w-xl">
               <p className="text-sm text-slate-600 leading-relaxed">
-                Alongside industry roles, I also pursue research-driven work. If
+                Alongside industry roles, I also pursue <span className="font-semibold">research</span>-driven work. If
                 you are here to evaluate my academic background or research
                 interests, you can explore my research profile and ongoing work{" "}
                 <a

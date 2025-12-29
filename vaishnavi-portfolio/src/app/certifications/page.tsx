@@ -36,7 +36,7 @@ const certifications: Certification[] = [
     image: "/assets/microsoft.png",
   },
   {
-    title: "Algorithmic Toolbox - UC San Diego",
+    title: "Algorithmic Toolbox (UC San Diego)",
     issuer: "Coursera",
     issued: "Issued Jun 2020",
     credentialId: null,
@@ -53,16 +53,7 @@ const certifications: Certification[] = [
     skills: ["Computer Programming", "IDLE", "Python (Programming Language)"],
     image: "/assets/coursera.png",
   },
-  {
-    title: "Valedictorian Miss Rosary",
-    issuer: "Rosary Convent High School",
-    issued: "Issued Mar 2020",
-    credentialId: null,
-    credentialUrl: null,
-    skills: [],
-    image: "/assets/rosary.png",
-    note: "Won Miss Rosary Title (equivalent to a Valedictorian) among a cohort of 300 high school students.",
-  },
+
 ];
 
 export default function CertificationsPage() {
@@ -74,7 +65,7 @@ export default function CertificationsPage() {
         transition={{ duration: 0.4 }}
         className="max-w-5xl mx-auto"
       >
-        <h1 className="text-4xl font-bold text-black mb-10">Certifications</h1>
+        <h1 className="text-4xl font-bold text-black mb-6 text-center">Certifications</h1>
 
         <div className="space-y-8">
           {certifications.map((c, idx) => (
