@@ -14,7 +14,7 @@ const GitHubCalendar = dynamic(() => import("react-github-calendar"), {
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
-  const [isLightOn, setIsLightOn] = useState(false);
+  const [lightMode, setLightMode] = useState(0); // 0=off, 1=lamp, 2=all
 
   useEffect(() => {
     setIsClient(true);
@@ -24,45 +24,44 @@ export default function Home() {
     <main className="bg-background relative overflow-hidden">
   {/* GLOBAL DARKNESS LAYER */}
   <div
-    className="pointer-events-none fixed inset-0 z-0 transition-colors duration-700"
-    style={{
-      backgroundColor: isLightOn
-        ? "rgba(0,0,0,0)"
-        : "rgba(0,0,0,0.35)",
-    }}
-  />
+  className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-700"
+  style={{
+    backgroundColor:
+      lightMode === 0 || lightMode === 1
+        ? "rgba(0,0,0,0.45)"
+        : "rgba(0,0,0,0)",
+  }}
+/>
 
-      {/* GLOBAL LIGHT OVERLAY (lights the PAGE, not the image) */}
-      {/* GLOBAL LIGHT / DARK OVERLAY */}
 {/* LAMP LIGHT OVERLAY */}
 <div
-  className={`pointer-events-none fixed inset-0 z-10 transition-opacity duration-700 ${
-    isLightOn ? "opacity-100" : "opacity-0"
-  }`}
+  className="pointer-events-none fixed inset-0 z-10 transition-opacity duration-700"
   style={{
+    opacity: lightMode === 2 ? 1 : 0,
     background: `
       radial-gradient(
         circle at 75% 45%,
-        rgba(255, 210, 140, 0.85) 0%,
-        rgba(255, 210, 140, 0.55) 18%,
-        rgba(255, 210, 140, 0.30) 35%,
-        rgba(255, 210, 140, 0.15) 50%,
-        rgba(255, 210, 140, 0.05) 65%,
-        rgba(255, 210, 140, 0) 80%
+        rgba(255, 210, 140, 0.9) 0%,
+        rgba(255, 210, 140, 0.55) 22%,
+        rgba(255, 210, 140, 0.30) 40%,
+        rgba(255, 210, 140, 0.12) 58%,
+        rgba(255, 210, 140, 0) 78%
       )
     `,
   }}
 />
 
-
-
       {/* HERO SECTION */}
       <section className="relative z-10 flex items-center justify-center px-6 py-8">
         <div
-          className={`relative w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-14 items-center rounded-3xl border border-pink-200 bg-white/70 backdrop-blur-xl shadow-xl p-6 md:p-8 transition ${
-            isLightOn ? "" : "brightness-95"
-          }`}
-        >
+  className={`relative w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-14 items-center rounded-3xl border border-pink-200 bg-white/70 backdrop-blur-xl shadow-xl
+    px-6 md:px-8
+    pt-14 pb-10 md:pt-16 md:pb-12
+    transition ${
+      lightMode === 0 ? "brightness-95" : ""
+    }`}
+>
+
           {/* LEFT CONTENT */}
           <div className="space-y-4">
             <div className="inline-block px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs uppercase tracking-wide font-medium">
@@ -146,37 +145,83 @@ export default function Home() {
           <div className="relative flex justify-center items-center">
             {/* glow behind image */}
             <div
-              className={`absolute -inset-6 rounded-3xl blur-2xl transition-opacity duration-700 ${
-                isLightOn
-                  ? "bg-pink-200/40 opacity-100"
-                  : "bg-pink-200/20 opacity-60"
-              }`}
-            />
+  className={`absolute -inset-6 rounded-3xl blur-2xl transition-opacity duration-700 ${
+    lightMode > 0
+      ? "bg-pink-200/40 opacity-100"
+      : "bg-pink-200/20 opacity-60"
+  }`}
+/>
+{/* CENTERED 3-STATE LIGHT TOGGLE */}
+{/* CENTERED 3-STATE LIGHT TOGGLE */}
+<div className="absolute -top-16 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center">
+
+  {/* TOGGLE PILL */}
+<div className="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur shadow-md ring-1 ring-pink-200">
+
+    {/* ICONS ROW */}
+    <div className="relative w-36 flex justify-between items-center">
+      <img
+        src="/icons/moon.png"
+        alt="Dark"
+        className={`h-4 w-4 transition-opacity ${
+          lightMode === 0 ? "opacity-100" : "opacity-40"
+        }`}
+      />
+
+      <img
+        src="/icons/lamp.png"
+        alt="Lamp"
+        className={`h-4 w-4 transition-opacity ${
+          lightMode === 1 ? "opacity-100" : "opacity-40"
+        }`}
+      />
+
+      <img
+        src="/icons/sun.png"
+        alt="Light"
+        className={`h-5 w-5 transition-opacity ${
+          lightMode === 2 ? "opacity-100" : "opacity-40"
+        }`}
+      />
+    </div>
+
+    {/* SLIDER */}
+    <input
+      type="range"
+      min="0"
+      max="2"
+      step="1"
+      value={lightMode}
+      onChange={(e) => setLightMode(Number(e.target.value))}
+      className="w-32 accent-pink-500 cursor-pointer"
+    />
+  </div>
+
+  {/* HELPER TEXT */}
+  <span className="text-xs text-slate-500 mt-1">
+    Toggle the lights
+  </span>
+</div>
 
             {/* HERO IMAGE (ALWAYS ABOVE LIGHT) */}
-            <div className="relative z-20">
+            <div className="relative z-20 mt-4">
               <Image
-                src={
-                  isLightOn
-                    ? "/images/hero-lit.jpg"
-                    : "/images/hero-dark.jpg"
-                }
-                alt="Hero portrait"
-                width={340}
-                height={420}
-                className="rounded-2xl shadow-xl"
-                priority
-              />
+  src={
+    lightMode === 0
+      ? "/images/hero-dark.jpg"
+      : "/images/hero-lit.jpg"
+  }
+  alt="Hero portrait"
+  width={300}
+  height={380}
+  className="rounded-2xl shadow-xl"
+  priority
+/>
+
+
             </div>
 
-            {/* LAMP TOGGLE BUTTON */}
-            <button
-              onClick={() => setIsLightOn((prev) => !prev)}
-              aria-label="Toggle lamp"
-              className="absolute bottom-4 right-4 z-30 rounded-full bg-white/80 backdrop-blur px-3 py-2 shadow-md hover:scale-105 transition"
-            >
-              {isLightOn ? "💡" : "🔌"}
-            </button>
+
           </div>
         </div>
       </section>
