@@ -10,97 +10,127 @@ const MotionNav = () => {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [menuOpen]);
 
   return (
     <>
-      {/* TOP NAVBAR */}
+      <style>{`
+        /* Debug: force menu toggle SVG visible when overridden by global CSS */
+        button[aria-label="Toggle menu"] svg {
+          width: 22px !important;
+          height: 22px !important;
+          display: block !important;
+          overflow: visible !important;
+        }
+      `}</style>
+      {/* ================= NAVBAR ================= */}
       <motion.nav
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4 }}
-        className="mx-auto max-w-7xl px-4"
+        transition={{ duration: 0.35 }}
+        className="sticky top-0 z-50 bg-pink-50 border-b border-pink-200"
       >
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="text-foreground font-semibold text-lg hover:text-pink-500 transition-colors"
-          >
-            Vaishnavi Lokhande
-          </Link>
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="flex items-center justify-between h-16">
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-6">
-            <ul className="flex space-x-6 text-foreground">
-              {['Home', 'Resume', 'Projects', 'Experience', 'Certifications', 'Contact'].map(item => (
-                <li key={item}>
-                  <Link
-                    href={
-                      item === 'Home'
-                        ? '/'
-                        : item === 'Certifications'
-                        ? '/certifications'
-                        : `/${item.toLowerCase()}`
-                    }
-                    className="hover:text-pink-500 transition-colors"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Logo */}
+            <Link
+              href="/"
+              className="text-lg font-semibold text-slate-900"
+            >
+              Vaishnavi Lokhande
+            </Link>
 
-            <div className="flex space-x-4">
-              <a href="https://github.com/iamVL" target="_blank" rel="noopener noreferrer">
-                <FaGithub size={22} />
-              </a>
-              <a href="https://www.linkedin.com/in/vaishnavi-lokhande000/" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin size={22} />
-              </a>
+            {/* Desktop Nav */}
+            <div className="hidden md:flex items-center space-x-6">
+              <ul className="flex space-x-6 text-slate-700">
+                {['Home', 'Resume', 'Projects', 'Experience', 'Certifications', 'Contact'].map(item => (
+                  <li key={item}>
+                    <Link
+                      href={
+                        item === 'Home'
+                          ? '/'
+                          : item === 'Certifications'
+                          ? '/certifications'
+                          : `/${item.toLowerCase()}`
+                      }
+                      className="hover:text-pink-600 transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex space-x-4">
+                <a href="https://github.com/iamVL" target="_blank" rel="noopener noreferrer">
+                  <FaGithub size={20} className="w-5 h-5" style={{ width: '20px', height: '20px' }} />
+                </a>
+                <a href="https://www.linkedin.com/in/vaishnavi-lokhande000/" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin size={20} className="w-5 h-5" style={{ width: '20px', height: '20px' }} />
+                </a>
+              </div>
             </div>
-          </div>
 
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMenuOpen(true)}
-            className="md:hidden text-foreground"
-            aria-label="Open menu"
-          >
-            <FaBars size={22} />
-          </button>
+            {/* ===== MOBILE TOGGLE (ONE BUTTON, SAME SPOT) ===== */}
+            <button
+              onClick={() => setMenuOpen(prev => !prev)}
+              aria-label="Toggle menu"
+              className="
+                md:hidden
+                fixed
+                top-4
+                right-4
+                w-10 h-10
+                flex items-center justify-center
+                rounded-xl
+                bg-pink-100
+                text-pink-700
+                z-[60]
+              "
+            >
+              {menuOpen ? (
+                <FaTimes size={22} className="w-5 h-5 text-pink-700" style={{ width: '22px', height: '22px' }} />
+              ) : (
+                <FaBars size={22} className="w-5 h-5 text-pink-700" style={{ width: '22px', height: '22px' }} />
+              )}
+            </button>
+          </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Overlay */}
+      {/* ================= OVERLAY ================= */}
       {menuOpen && (
         <div
-  className="fixed inset-0 z-40 bg-black/40 md:hidden"
-  style={{ zIndex: 45 }}
-  onClick={() => setMenuOpen(false)}
-/>
-
+          className="fixed inset-0 z-[45] bg-black/40 md:hidden"
+          onClick={() => setMenuOpen(false)}
+        />
       )}
 
-      {/* Mobile Drawer */}
-<aside
-  className={`fixed top-16 left-0 z-50 h-[calc(100vh-4rem)] w-64 bg-white shadow-xl transform transition-transform duration-400 ease-out md:hidden
-  flex flex-col
-  ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}
->
-
-
-        <div className="flex items-center justify-between h-16 px-4 border-b">
-
-          <span className="font-semibold">Menu</span>
-          <button onClick={() => setMenuOpen(false)}>
-            <FaTimes size={20} />
-          </button>
+      {/* ================= MOBILE DRAWER ================= */}
+      <aside
+        className={`
+          fixed top-16 left-0 z-[50]
+          h-[calc(100vh-4rem)]
+          w-72
+          bg-white
+          shadow-xl
+          transform transition-transform duration-300 ease-out
+          md:hidden
+          flex flex-col
+          ${menuOpen ? 'translate-x-0' : '-translate-x-full'}
+        `}
+      >
+        {/* Header */}
+        <div className="h-16 px-4 flex items-center border-b">
+          <span className="font-semibold text-slate-900">Menu</span>
         </div>
 
-        <ul className="flex flex-col flex-1 justify-center px-6 space-y-6 text-center">
-
-
+        {/* Links */}
+        <ul className="flex flex-col flex-1 justify-center gap-6 px-6 text-center">
           {['Home', 'Resume', 'Projects', 'Experience', 'Certifications', 'Contact'].map(item => (
             <li key={item}>
               <Link
@@ -112,7 +142,7 @@ const MotionNav = () => {
                     : `/${item.toLowerCase()}`
                 }
                 onClick={() => setMenuOpen(false)}
-                className="block py-2 text-lg"
+                className="text-lg text-slate-700 hover:text-pink-600 transition"
               >
                 {item}
               </Link>
@@ -120,13 +150,13 @@ const MotionNav = () => {
           ))}
         </ul>
 
-       <div className="flex gap-4 p-4 border-t justify-center">
-
+        {/* Socials */}
+        <div className="flex justify-center gap-5 p-4 border-t">
           <a href="https://github.com/iamVL" target="_blank">
-            <FaGithub size={20} />
+            <FaGithub size={20} className="w-5 h-5" style={{ width: '20px', height: '20px' }} />
           </a>
           <a href="https://www.linkedin.com/in/vaishnavi-lokhande000/" target="_blank">
-            <FaLinkedin size={20} />
+            <FaLinkedin size={20} className="w-5 h-5" style={{ width: '20px', height: '20px' }} />
           </a>
         </div>
       </aside>

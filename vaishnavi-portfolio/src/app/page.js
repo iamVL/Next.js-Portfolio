@@ -72,14 +72,18 @@ useEffect(() => {
 />
 
 {/* HERO SECTION */}
-<section className="relative z-10 flex items-center justify-center px-6 py-8">
+<section className="relative z-10 flex items-center justify-center px-2 sm:px-6 py-8">
+
+
 {/* MOBILE FRAME */}
-<div className="md:hidden mx-auto max-w-[390px] px-3">
+<div className="md:hidden mx-auto w-full px-2">
+
 
   {/* ======================= */}
   {/* MOBILE HERO (md:hidden) */}
   {/* ======================= */}
-  <div className="w-full rounded-2xl border border-pink-200 bg-white/70 backdrop-blur-xl shadow-xl px-4 pt-6 pb-8 space-y-4 text-center">
+<div className="w-full rounded-2xl border border-pink-200 bg-white/70 backdrop-blur-xl shadow-xl px-6 pt-6 pb-8 space-y-5 text-center">
+
 
 
     {/* 2. Pink graduating badge */}
