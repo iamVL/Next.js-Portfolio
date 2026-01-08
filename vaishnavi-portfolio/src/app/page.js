@@ -21,7 +21,8 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-background relative overflow-hidden">
+    <main className="bg-background relative overflow-x-hidden">
+
   {/* GLOBAL DARKNESS LAYER */}
   <div
   className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-700"
@@ -53,11 +54,14 @@ export default function Home() {
 
 {/* HERO SECTION */}
 <section className="relative z-10 flex items-center justify-center px-6 py-8">
+{/* MOBILE FRAME */}
+<div className="md:hidden mx-auto max-w-[390px] px-3">
 
   {/* ======================= */}
   {/* MOBILE HERO (md:hidden) */}
   {/* ======================= */}
-  <div className="md:hidden w-full max-w-xl rounded-3xl border border-pink-200 bg-white/70 backdrop-blur-xl shadow-xl px-4 pt-6 pb-8 space-y-4 text-center">
+  <div className="w-full rounded-2xl border border-pink-200 bg-white/70 backdrop-blur-xl shadow-xl px-4 pt-6 pb-8 space-y-4 text-center">
+
 
     {/* 2. Pink graduating badge */}
     <div className="inline-block px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs uppercase tracking-wide font-medium">
@@ -138,7 +142,8 @@ export default function Home() {
     </p>
 
     {/* 8. Research-driven paragraph */}
-    <div className="rounded-xl border bg-white/60 p-3">
+    <div className="rounded-xl border bg-white/60 p-3 mb-10">
+
       <p className="text-sm text-slate-600">
         Alongside industry roles, I also pursue <span className="font-semibold">research</span>-driven work.
         Explore my research{" "}
@@ -154,12 +159,16 @@ export default function Home() {
     </div>
 
     {/* 9. Buttons (same row) */}
-    <div className="flex gap-3 justify-center pt-3">
+    <div className="flex flex-col sm:flex-row gap-3 justify-center pt-3">
+
       <Link href="/projects">
         <motion.span
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          className="px-5 py-3 rounded-full bg-pink-500 text-white font-medium shadow-md cursor-pointer"
+          className="px-4 py-2.5 rounded-full bg-pink-100 text-pink-700 text-sm font-medium cursor-pointer w-full sm:w-auto text-center"
+
+
+
         >
           View My Projects
         </motion.span>
@@ -169,14 +178,15 @@ export default function Home() {
         <motion.span
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          className="px-5 py-3 rounded-full bg-pink-100 text-pink-700 font-medium cursor-pointer"
+          className="px-4 py-2.5 whitespace-nowrap rounded-full bg-pink-100 text-pink-700 text-sm font-medium cursor-pointer"
+
         >
           Download My Resume
         </motion.span>
       </a>
     </div>
   </div>
-
+</div>
   {/* ========================= */}
   {/* DESKTOP HERO (UNCHANGED) */}
   {/* ========================= */}
