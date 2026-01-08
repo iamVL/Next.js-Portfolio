@@ -15,10 +15,29 @@ const GitHubCalendar = dynamic(() => import("react-github-calendar"), {
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
   const [lightMode, setLightMode] = useState(0); // 0=off, 1=lamp, 2=all
+  const [totalContributions, setTotalContributions] = useState(null);
+
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+useEffect(() => {
+  if (!isClient) return;
+
+  fetch("https://github-contributions-api.jogruber.de/v4/iamVL")
+    .then((res) => res.json())
+    .then((data) => {
+      // SAFEST: totalContributions always exists
+      if (typeof data.totalContributions === "number") {
+        setTotalContributions(data.totalContributions);
+      }
+    })
+    .catch((err) => {
+      console.error("GitHub contributions fetch failed", err);
+    });
+}, [isClient]);
+
 
   return (
     <main className="bg-background relative overflow-x-hidden">
@@ -325,9 +344,52 @@ export default function Home() {
 
 </section>
 
+{/* ========================= */}
+{/* MOBILE GITHUB (md:hidden) */}
+{/* ========================= */}
+<section className="relative z-10 flex justify-center px-4 pb-8 md:hidden">
+  <div className="w-full max-w-md rounded-2xl border border-pink-200 bg-white/70 backdrop-blur-xl shadow-lg px-4 py-5">
+
+    {/* Title */}
+    <h2 className="text-lg font-semibold text-center">
+      GitHub Activity
+    </h2>
+
+    {/* Subtext / credibility */}
+    <p className="text-xs text-slate-500 text-center mt-1">
+      Consistent contributions & project work
+    </p>
+
+    {/* Calendar wrapper */}
+    <div className="mt-4 overflow-hidden">
+{totalContributions !== null && (
+  <p className="text-sm text-slate-700 text-center mt-4">
+    <span className="font-semibold">{totalContributions}</span>{" "}
+    GitHub contributions in the last year
+  </p>
+)}
+
+
+    </div>
+
+    {/* CTA */}
+    <div className="flex justify-center mt-4">
+      <a
+        href="https://github.com/iamVL"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-sm text-pink-600 font-medium underline"
+      >
+        View GitHub →
+      </a>
+    </div>
+
+  </div>
+</section>
 
       {/* GITHUB CONTRIBUTIONS */}
-      <section className="relative z-10 flex justify-center px-6 pb-8">
+      <section className="relative z-10 hidden md:flex justify-center px-6 pb-8">
+
         <div className="w-full max-w-4xl bg-white/60 rounded-2xl border border-pink-200 shadow-lg p-4">
           <h2 className="text-xl font-semibold mb-2">
             GitHub Contributions
@@ -342,6 +404,7 @@ export default function Home() {
           )}
         </div>
       </section>
+
     </main>
   );
 }
