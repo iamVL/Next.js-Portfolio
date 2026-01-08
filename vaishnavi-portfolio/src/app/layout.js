@@ -23,10 +23,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen bg-gradient-to-b from-white via-pink-50 to-white`}>
-        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
-          <MotionNav />
-        </header>
-        <main className="flex min-h-screen flex-col items-center justify-between pt-20 p-0">
+   <header className="sticky top-0 z-50 bg-pink-50 shadow-md border-b border-pink-200">
+
+
+
+  <MotionNav />
+</header>
+
+
+<main className="flex min-h-screen flex-col items-center justify-between p-0">
+
           {children}
         </main>
       </body>
