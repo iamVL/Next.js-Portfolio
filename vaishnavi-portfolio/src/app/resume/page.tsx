@@ -19,7 +19,7 @@ const Resume = () => {
           Resume
         </h1>
 <a
-  href="/assets/SWE_Vaishnavi_Lokhande_resume.pdf"
+  href="/assets/Vaishnavi_Lokhande_resume.pdf"
   download="Vaishnavi_Lokhande_Resume.pdf"
   className="ml-4 inline-flex items-center rounded-full bg-pink-500 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-pink-600"
 >
@@ -41,7 +41,7 @@ const Resume = () => {
         style={{ height: "85vh" }}
       >
         <iframe
-          src="/assets/SWE_Vaishnavi_Lokhande_resume.pdf"
+          src="/assets/Vaishnavi_Lokhande_resume.pdf"
           title="Vaishnavi Lokhande Resume"
           className="w-full h-full"
         />

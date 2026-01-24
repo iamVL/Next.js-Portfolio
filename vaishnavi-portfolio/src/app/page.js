@@ -197,7 +197,7 @@ useEffect(() => {
         </motion.span>
       </Link>
 
-      <a href="/assets/SWE_Vaishnavi_Lokhande_resume.pdf" download>
+      <a href="/assets/Vaishnavi_Lokhande_resume.pdf" download>
         <motion.span
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
@@ -277,7 +277,7 @@ useEffect(() => {
           </motion.span>
         </Link>
 
-        <a href="/assets/SWE_Vaishnavi_Lokhande_resume.pdf" download>
+        <a href="/assets/Vaishnavi_Lokhande_resume.pdf" download>
           <motion.span className="px-6 py-3 rounded-full bg-pink-100 text-pink-700 font-medium cursor-pointer">
             Download My Resume
           </motion.span>
